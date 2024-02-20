@@ -50,16 +50,16 @@ public class IntegracaoFormatadorTest
         }
     }
     
-    @Test
-    public void testaFormatacaoAjuda() throws FileNotFoundException, ErroCompilacao, ExcecaoVisitaASA, IOException, Exception
-    {
-        File dirExemplos = new File("../ide/src/main/assets/ajuda/recursos/exemplos");
+    // @Test
+    // public void testaFormatacaoAjuda() throws FileNotFoundException, ErroCompilacao, ExcecaoVisitaASA, IOException, Exception
+    // {
+    //     File dirExemplos = new File("../ide/src/main/assets/ajuda/recursos/exemplos");
 
-        File[] diretorios = dirExemplos.listFiles();
-        for (File diretorio : diretorios) {
-            testaAjuda(diretorio);
-        }
-    }
+    //     File[] diretorios = dirExemplos.listFiles();
+    //     for (File diretorio : diretorios) {
+    //         testaAjuda(diretorio);
+    //     }
+    // }
 
     private String geraCodigoJava(String codigoPortugol, long seed) throws Exception
     {

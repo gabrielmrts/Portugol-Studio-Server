@@ -42,6 +42,7 @@ import javax.swing.JTree;
 import javax.swing.SwingUtilities;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
 import org.fit.cssbox.swingbox.util.DefaultHyperlinkHandler;
@@ -177,10 +178,10 @@ public class SwingBrowserHyperlinkHandler extends DefaultHyperlinkHandler
 
     private TreePath localizarTopicoNaArvore(DefaultMutableTreeNode raiz, Topico topico)
     {
-        Enumeration<DefaultMutableTreeNode> e = raiz.depthFirstEnumeration();
+        Enumeration<TreeNode> e = raiz.depthFirstEnumeration();
         while (e.hasMoreElements())
         {
-            DefaultMutableTreeNode no = e.nextElement();
+            DefaultMutableTreeNode no = (DefaultMutableTreeNode) e.nextElement();
             if (no.getUserObject().equals(topico))
             {
                 return new TreePath(no.getPath());

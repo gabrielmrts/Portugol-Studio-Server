@@ -1,5 +1,11 @@
 package br.univali.portugol.nucleo.bibliotecas;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import br.univali.portugol.nucleo.bibliotecas.base.Biblioteca;
 import br.univali.portugol.nucleo.bibliotecas.base.ErroExecucaoBiblioteca;
 import br.univali.portugol.nucleo.bibliotecas.base.TipoBiblioteca;
@@ -233,4 +239,65 @@ public final class Texto extends Biblioteca
             throw new ErroExecucaoBiblioteca("Posição inicial ou final inválida. A posição deve estar entre 0 e o tamanho da cadeia");
         }
     }
+
+    @DocumentacaoFuncao
+    (
+        descricao = "Executa uma expressão regular em uma cadeia",
+        retorno = "um <tipo>logico</tipo> indicando se a expressão regular encontrou alguma ocorrência.",
+        parametros = 
+        {
+            @DocumentacaoParametro(nome = "cadeia", descricao = ""),
+            @DocumentacaoParametro(nome = "expressao", descricao = "")
+        },
+        
+        autores = 
+        {
+                @Autor(nome = "Gabriel Martins de Lima", email = "gabrielmrts@yahoo.com")
+        }
+    )
+    public boolean expressao_regular(String cadeia, String expressao) throws ErroExecucaoBiblioteca, InterruptedException
+    {
+        try
+        {
+            Pattern padrao = Pattern.compile(expressao);
+            Matcher matcher = padrao.matcher(cadeia);
+            return matcher.find();
+        }
+        catch (Exception excecao)
+        {
+            throw new ErroExecucaoBiblioteca("");
+        }
+    }
+
+    @DocumentacaoFuncao
+    (
+        descricao = "Executa uma expressão regular em uma cadeia",
+        retorno = "um <tipo>logico</tipo> indicando se a expressão regular encontrou alguma ocorrência.",
+        parametros = 
+        {
+            @DocumentacaoParametro(nome = "cadeia_json", descricao = ""),
+            @DocumentacaoParametro(nome = "campo", descricao = "")
+        },
+        
+        autores = 
+        {
+                @Autor(nome = "Gabriel Martins de Lima", email = "gabrielmrts@yahoo.com")
+        }
+    )
+    public String pegar_campo_json(String cadeia_json, String campo) throws ErroExecucaoBiblioteca, InterruptedException
+    {
+        try
+        {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(cadeia_json);
+            String value = jsonNode.get(campo).asText();
+
+            return value;
+        }
+        catch (Exception excecao)
+        {
+            throw new ErroExecucaoBiblioteca("");
+        }
+    }
+
 }

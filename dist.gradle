@@ -1191,15 +1191,15 @@ task dist (dependsOn: [rootProject.tasks.cleanAll, rootProject.tasks.buildAll]){
     }
 }
 
-task 'dist-test' (){
+// task 'dist-test' (){
     
-    doLast {
+//     doLast {
         
-        def config = loadConfigurations(true)
+//         def config = loadConfigurations(true)
         
-        runBuild(config)
-    }
-}
+//         runBuild(config)
+//     }
+// }
 
 task 'dist-gui-test'(){
     

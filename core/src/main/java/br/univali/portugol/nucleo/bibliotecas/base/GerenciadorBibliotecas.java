@@ -73,6 +73,8 @@ public final class GerenciadorBibliotecas
             bibliotecasDisponiveis.add("Internet");
             bibliotecasDisponiveis.add("Objetos");
             bibliotecasDisponiveis.add("ServicosWeb");
+            bibliotecasDisponiveis.add("Servidor");
+            bibliotecasDisponiveis.add("BancoDeDados");
 
             Collections.sort(bibliotecasDisponiveis);
         }
